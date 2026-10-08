@@ -1,0 +1,8 @@
+target/
+dist/
+data/
+uploads/
+*.db
+.vscode/
+.idea/
+*.class
