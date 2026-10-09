@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" styleClass="app-root">
+    <left>
+        <VBox styleClass="sidebar" prefWidth="240" minWidth="240" spacing="8">
+            <Label text="CampusCare" styleClass="brand"/>
+            <Label fx:id="roleLabel" styleClass="brand-sub"/>
+            <Separator styleClass="sidebar-separator"/>
+            <VBox fx:id="menuBox" spacing="4" VBox.vgrow="ALWAYS"/>
+            <Label fx:id="userLabel" styleClass="sidebar-user" wrapText="true"/>
+            <Button text="Logout" onAction="#onLogout" styleClass="logout-button" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+    <top>
+        <HBox styleClass="topbar" alignment="CENTER_LEFT">
+            <Label fx:id="pageTitle" styleClass="page-title"/>
+        </HBox>
+    </top>
+    <center>
+        <StackPane fx:id="content" styleClass="content-area"/>
+    </center>
+</BorderPane>

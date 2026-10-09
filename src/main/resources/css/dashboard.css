@@ -1,0 +1,19 @@
+.app-root { -fx-background-color: -cc-bg; }
+.content-area { -fx-background-color: -cc-bg; }
+
+.sidebar { -fx-background-color: -cc-navy; -fx-padding: 22 14 18 14; }
+.brand { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white; }
+.brand-sub { -fx-text-fill: #8FB0E0; -fx-font-size: 12px; }
+.sidebar-separator .line { -fx-border-color: #27476F; -fx-border-width: 1 0 0 0; }
+
+.menu-button { -fx-background-color: transparent; -fx-text-fill: #D5E1F2; -fx-alignment: CENTER_LEFT;
+               -fx-padding: 10 14; -fx-font-weight: normal; -fx-background-radius: 6; }
+.menu-button:hover { -fx-background-color: -cc-navy-light; }
+.menu-active, .menu-active:hover { -fx-background-color: -cc-blue; -fx-text-fill: white; -fx-font-weight: bold; }
+
+.sidebar-user { -fx-text-fill: #A9BEDB; -fx-font-size: 12px; -fx-padding: 8 4; }
+.logout-button { -fx-background-color: #27476F; -fx-text-fill: white; }
+.logout-button:hover { -fx-background-color: -cc-red; }
+
+.topbar { -fx-background-color: white; -fx-padding: 14 24; -fx-border-color: transparent transparent -cc-border transparent; }
+.page-title { -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: -cc-navy; }
