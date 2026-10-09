@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.function.Consumer;
 
 /** Loads FXML screens, switches between login/register/dashboards and opens dialogs. */
@@ -49,7 +50,7 @@ public final class Navigator {
             loader.setController(controller);
             scene.setRoot(loader.load());
         } catch (IOException e) {
-            throw new AppException("Cannot open dashboard: " + e.getMessage(), e);
+            throw new AppException("Cannot open dashboard: " + rootMessage(e), e);
         }
     }
 
@@ -57,7 +58,7 @@ public final class Navigator {
         try {
             scene.setRoot(loader(fxml).load());
         } catch (IOException e) {
-            throw new AppException("Cannot open screen " + fxml + ": " + e.getMessage(), e);
+            throw new AppException("Cannot open screen " + fxml + ": " + rootMessage(e), e);
         }
     }
 
@@ -69,7 +70,7 @@ public final class Navigator {
             container.getChildren().setAll(root);
             return loader.getController();
         } catch (IOException e) {
-            throw new AppException("Cannot open screen " + fxml + ": " + e.getMessage(), e);
+            throw new AppException("Cannot open screen " + fxml + ": " + rootMessage(e), e);
         }
     }
 
@@ -89,7 +90,7 @@ public final class Navigator {
             dialog.setScene(s);
             dialog.showAndWait();
         } catch (IOException e) {
-            throw new AppException("Cannot open screen " + fxml + ": " + e.getMessage(), e);
+            throw new AppException("Cannot open screen " + fxml + ": " + rootMessage(e), e);
         }
     }
 
@@ -100,7 +101,16 @@ public final class Navigator {
     public static void notificationsChanged() { if (notificationsListener != null) notificationsListener.run(); }
 
     private static FXMLLoader loader(String fxml) {
-        return new FXMLLoader(Navigator.class.getResource("/fxml/" + fxml));
+        URL url = Navigator.class.getResource("/fxml/" + fxml);
+        if (url == null) throw new AppException("Screen file not found: " + fxml);
+        return new FXMLLoader(url);
+    }
+
+    /** FXMLLoader hides the real problem inside nested causes; show the deepest message. */
+    private static String rootMessage(Throwable t) {
+        Throwable r = t;
+        while (r.getCause() != null && r.getCause() != r) r = r.getCause();
+        return r.getMessage() == null ? r.toString() : r.getMessage();
     }
 
     private static void addStyles(Scene s) {

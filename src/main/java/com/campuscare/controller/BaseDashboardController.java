@@ -67,9 +67,16 @@ public abstract class BaseDashboardController {
         return notificationButton;
     }
 
+    /** Opens a screen in the content area. A missing/broken screen shows a note instead of crashing. */
     protected void open(String fxml, String title) {
         pageTitle.setText(title);
-        Navigator.loadInto(content, fxml);
+        try {
+            Navigator.loadInto(content, fxml);
+        } catch (AppException e) {
+            Label note = new Label("This screen is not available yet.\n" + e.getMessage());
+            note.getStyleClass().add("hint-label");
+            content.getChildren().setAll(note);
+        }
     }
 
     private void refreshBadge() {
