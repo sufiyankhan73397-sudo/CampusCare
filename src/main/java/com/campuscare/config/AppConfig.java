@@ -11,8 +11,11 @@ import java.util.Set;
 /**
  * Central place for application constants and folder locations.
  * Uploads are stored in the user's home folder (C:\Users\<name>\CampusCare).
- * Database settings (PostgreSQL / Neon) are read from config.properties,
- * which is NOT committed to GitHub.
+ * Database settings (PostgreSQL / Neon) are read from, in this order:
+ *   1. config.properties in the current folder
+ *   2. config.properties in C:\Users\<name>\CampusCare
+ *   3. app-config.properties bundled inside the jar (used by the packaged EXE)
+ * None of these files is committed to GitHub.
  */
 public final class AppConfig {
     public static final String APP_NAME = "CampusCare";
@@ -56,12 +59,11 @@ public final class AppConfig {
         }
         String value = dbProps.getProperty(key);
         if (value == null || value.isBlank()) {
-            throw new IllegalStateException("Missing '" + key + "' in config.properties");
+            throw new IllegalStateException("Missing '" + key + "' in database configuration");
         }
         return value.trim();
     }
 
-    /** Looks for config.properties in the current folder first, then in C:\Users\<name>\CampusCare. */
     private static Properties loadDbProperties() {
         Path[] candidates = { Paths.get("config.properties"), APP_DIR.resolve("config.properties") };
         for (Path p : candidates) {
@@ -75,8 +77,17 @@ public final class AppConfig {
                 }
             }
         }
+        try (InputStream in = AppConfig.class.getResourceAsStream("/app-config.properties")) {
+            if (in != null) {
+                Properties props = new Properties();
+                props.load(in);
+                return props;
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Cannot read bundled app-config.properties: " + e.getMessage(), e);
+        }
         throw new IllegalStateException(
-                "config.properties not found. Copy config.properties.example to config.properties "
+                "Database configuration not found. Copy config.properties.example to config.properties "
                 + "and fill in the database details.");
     }
 }

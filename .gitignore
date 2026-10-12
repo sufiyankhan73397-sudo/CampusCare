@@ -7,3 +7,7 @@ uploads/
 .idea/
 *.class
 config.properties
+src/main/resources/app-config.properties
+
+installer/input/
+installer/output/
