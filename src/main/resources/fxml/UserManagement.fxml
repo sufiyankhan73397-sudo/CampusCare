@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.UserManagementController" spacing="12" styleClass="view-pane">
+    <TableView fx:id="table" VBox.vgrow="ALWAYS"/>
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Refresh" onAction="#onRefresh" styleClass="secondary-button"/>
+        <Button fx:id="toggleButton" text="Deactivate User" onAction="#onToggleStatus" styleClass="danger-button"/>
+        <Button text="Add User" onAction="#onAddUser" styleClass="primary-button"/>
+    </HBox>
+</VBox>
