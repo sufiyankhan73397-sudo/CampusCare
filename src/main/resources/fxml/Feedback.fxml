@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.FeedbackController" spacing="14" styleClass="view-pane">
+    <HBox spacing="16">
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <Label fx:id="averageLabel" styleClass="stat-value"/>
+            <Label text="Average Rating" styleClass="stat-caption"/>
+        </VBox>
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <Label fx:id="totalLabel" styleClass="stat-value"/>
+            <Label text="Total Feedback" styleClass="stat-caption"/>
+        </VBox>
+    </HBox>
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+        <VBox spacing="8" prefWidth="330" minWidth="300">
+            <Label text="Department-wise Rating" styleClass="section-title"/>
+            <TableView fx:id="departmentTable" VBox.vgrow="ALWAYS"/>
+        </VBox>
+        <VBox spacing="8" HBox.hgrow="ALWAYS">
+            <Label text="All Feedback" styleClass="section-title"/>
+            <TableView fx:id="feedbackTable" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </HBox>
+</VBox>
