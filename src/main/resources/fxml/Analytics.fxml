@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.AnalyticsController" fitToWidth="true" styleClass="transparent-scroll">
+    <VBox spacing="16" styleClass="view-pane">
+        <HBox spacing="16">
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                <Label fx:id="totalLabel" styleClass="stat-value"/>
+                <Label text="Total Complaints" styleClass="stat-caption"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                <Label fx:id="openLabel" styleClass="stat-value"/>
+                <Label text="Open" styleClass="stat-caption"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                <Label fx:id="doneLabel" styleClass="stat-value"/>
+                <Label text="Resolved / Closed" styleClass="stat-caption"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                <Label fx:id="ratingLabel" styleClass="stat-value"/>
+                <Label text="Average Rating" styleClass="stat-caption"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                <Label fx:id="usersLabel" styleClass="stat-value"/>
+                <Label text="Registered Users" styleClass="stat-caption"/>
+            </VBox>
+        </HBox>
+        <GridPane hgap="16" vgap="16">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50"/>
+                <ColumnConstraints percentWidth="50"/>
+            </columnConstraints>
+            <PieChart fx:id="statusPie" title="Complaints by Status" prefHeight="300" styleClass="chart-card"
+                      GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <BarChart fx:id="departmentChart" title="Complaints by Department" legendVisible="false" prefHeight="300"
+                      styleClass="chart-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <xAxis><CategoryAxis/></xAxis>
+                <yAxis><NumberAxis minorTickVisible="false" tickUnit="1"/></yAxis>
+            </BarChart>
+            <BarChart fx:id="priorityChart" title="Complaints by Priority" legendVisible="false" prefHeight="300"
+                      styleClass="chart-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <xAxis><CategoryAxis/></xAxis>
+                <yAxis><NumberAxis minorTickVisible="false" tickUnit="1"/></yAxis>
+            </BarChart>
+            <BarChart fx:id="categoryChart" title="Complaints by Category" legendVisible="false" prefHeight="300"
+                      styleClass="chart-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <xAxis><CategoryAxis/></xAxis>
+                <yAxis><NumberAxis minorTickVisible="false" tickUnit="1"/></yAxis>
+            </BarChart>
+        </GridPane>
+    </VBox>
+</ScrollPane>
