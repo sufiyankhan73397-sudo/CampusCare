@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/** Opens SQLite connections and provides a small transaction helper. */
+/** Opens PostgreSQL (Neon) connections and provides a small transaction helper. */
 public final class DatabaseConnection {
     private DatabaseConnection() { }
 
@@ -20,11 +20,7 @@ public final class DatabaseConnection {
     }
 
     public static Connection get() throws SQLException {
-        Connection c = DriverManager.getConnection("jdbc:sqlite:" + AppConfig.DB_FILE.toAbsolutePath());
-        try (Statement st = c.createStatement()) {
-            st.execute("PRAGMA foreign_keys = ON");
-        }
-        return c;
+        return DriverManager.getConnection(AppConfig.dbUrl(), AppConfig.dbUser(), AppConfig.dbPassword());
     }
 
     /** Runs work in a transaction: commit on success, rollback on any failure. */
@@ -47,9 +43,9 @@ public final class DatabaseConnection {
         }
     }
 
-    /** Id of the row inserted last on this connection. */
+    /** Id of the row inserted last on this connection (works after an insert into a SERIAL table). */
     public static int lastInsertId(Connection c) throws SQLException {
-        try (Statement st = c.createStatement(); ResultSet rs = st.executeQuery("SELECT last_insert_rowid()")) {
+        try (Statement st = c.createStatement(); ResultSet rs = st.executeQuery("SELECT lastval()")) {
             return rs.next() ? rs.getInt(1) : -1;
         }
     }

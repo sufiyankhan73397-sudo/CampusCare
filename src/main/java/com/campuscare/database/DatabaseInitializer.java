@@ -10,78 +10,83 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Creates the SQLite file, all tables and the default data on first run.
+ * Creates all tables and the default data in the PostgreSQL (Neon) database on first run.
  * Safe to call on every start (uses IF NOT EXISTS and seeds only once).
+ * Timestamps are stored as TEXT in the format yyyy-MM-dd HH:mm:ss (India time).
  */
 public final class DatabaseInitializer {
     private DatabaseInitializer() { }
 
+    /** Default value for timestamp columns: current India time as plain text. */
+    private static final String NOW =
+        "to_char(now() AT TIME ZONE 'Asia/Kolkata', 'YYYY-MM-DD HH24:MI:SS')";
+
     private static final String[] TABLES = {
         "CREATE TABLE IF NOT EXISTS departments ("
-            + "department_id INTEGER PRIMARY KEY AUTOINCREMENT, department_name TEXT NOT NULL UNIQUE, "
+            + "department_id SERIAL PRIMARY KEY, department_name TEXT NOT NULL UNIQUE, "
             + "description TEXT, status TEXT NOT NULL DEFAULT 'ACTIVE')",
 
         "CREATE TABLE IF NOT EXISTS users ("
-            + "user_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, "
+            + "user_id SERIAL PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, "
             + "password TEXT NOT NULL, phone TEXT, "
             + "role TEXT NOT NULL CHECK (role IN ('STUDENT','STAFF','ADMIN')), "
             + "department_id INTEGER REFERENCES departments(department_id), "
             + "status TEXT NOT NULL DEFAULT 'ACTIVE', "
-            + "created_at TEXT NOT NULL DEFAULT (datetime('now','localtime')))",
+            + "created_at TEXT NOT NULL DEFAULT " + NOW + ")",
 
         "CREATE TABLE IF NOT EXISTS categories ("
-            + "category_id INTEGER PRIMARY KEY AUTOINCREMENT, category_name TEXT NOT NULL UNIQUE, "
+            + "category_id SERIAL PRIMARY KEY, category_name TEXT NOT NULL UNIQUE, "
             + "department_id INTEGER NOT NULL REFERENCES departments(department_id))",
 
         "CREATE TABLE IF NOT EXISTS locations ("
-            + "location_id INTEGER PRIMARY KEY AUTOINCREMENT, location_name TEXT NOT NULL UNIQUE, "
+            + "location_id SERIAL PRIMARY KEY, location_name TEXT NOT NULL UNIQUE, "
             + "building TEXT, floor TEXT, description TEXT)",
 
         "CREATE TABLE IF NOT EXISTS complaints ("
-            + "complaint_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + "complaint_id SERIAL PRIMARY KEY, "
             + "user_id INTEGER NOT NULL REFERENCES users(user_id), "
             + "category_id INTEGER NOT NULL REFERENCES categories(category_id), "
             + "location_id INTEGER NOT NULL REFERENCES locations(location_id), "
             + "title TEXT NOT NULL, description TEXT NOT NULL, "
             + "priority TEXT NOT NULL CHECK (priority IN ('NORMAL','MEDIUM','HIGH','CRITICAL')), "
             + "status TEXT NOT NULL DEFAULT 'SUBMITTED', "
-            + "created_at TEXT NOT NULL DEFAULT (datetime('now','localtime')), "
-            + "updated_at TEXT NOT NULL DEFAULT (datetime('now','localtime')), resolved_at TEXT)",
+            + "created_at TEXT NOT NULL DEFAULT " + NOW + ", "
+            + "updated_at TEXT NOT NULL DEFAULT " + NOW + ", resolved_at TEXT)",
 
         "CREATE TABLE IF NOT EXISTS staff_assignments ("
-            + "assignment_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + "assignment_id SERIAL PRIMARY KEY, "
             + "complaint_id INTEGER NOT NULL REFERENCES complaints(complaint_id), "
             + "staff_id INTEGER NOT NULL REFERENCES users(user_id), "
             + "assigned_by INTEGER REFERENCES users(user_id), "
-            + "assigned_at TEXT NOT NULL DEFAULT (datetime('now','localtime')), "
+            + "assigned_at TEXT NOT NULL DEFAULT " + NOW + ", "
             + "status TEXT NOT NULL DEFAULT 'ACTIVE')",
 
         "CREATE TABLE IF NOT EXISTS complaint_history ("
-            + "history_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + "history_id SERIAL PRIMARY KEY, "
             + "complaint_id INTEGER NOT NULL REFERENCES complaints(complaint_id), "
             + "updated_by INTEGER REFERENCES users(user_id), old_status TEXT, new_status TEXT NOT NULL, "
-            + "remarks TEXT, updated_at TEXT NOT NULL DEFAULT (datetime('now','localtime')))",
+            + "remarks TEXT, updated_at TEXT NOT NULL DEFAULT " + NOW + ")",
 
         "CREATE TABLE IF NOT EXISTS attachments ("
-            + "attachment_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + "attachment_id SERIAL PRIMARY KEY, "
             + "complaint_id INTEGER NOT NULL REFERENCES complaints(complaint_id), "
             + "file_name TEXT NOT NULL, file_path TEXT NOT NULL, "
             + "uploaded_by INTEGER REFERENCES users(user_id), "
-            + "uploaded_at TEXT NOT NULL DEFAULT (datetime('now','localtime')))",
+            + "uploaded_at TEXT NOT NULL DEFAULT " + NOW + ")",
 
         "CREATE TABLE IF NOT EXISTS notifications ("
-            + "notification_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + "notification_id SERIAL PRIMARY KEY, "
             + "user_id INTEGER NOT NULL REFERENCES users(user_id), "
             + "complaint_id INTEGER REFERENCES complaints(complaint_id), message TEXT NOT NULL, "
             + "is_read INTEGER NOT NULL DEFAULT 0, "
-            + "created_at TEXT NOT NULL DEFAULT (datetime('now','localtime')))",
+            + "created_at TEXT NOT NULL DEFAULT " + NOW + ")",
 
         "CREATE TABLE IF NOT EXISTS feedback ("
-            + "feedback_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + "feedback_id SERIAL PRIMARY KEY, "
             + "complaint_id INTEGER NOT NULL UNIQUE REFERENCES complaints(complaint_id), "
             + "user_id INTEGER NOT NULL REFERENCES users(user_id), "
             + "rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5), comments TEXT, "
-            + "created_at TEXT NOT NULL DEFAULT (datetime('now','localtime')))",
+            + "created_at TEXT NOT NULL DEFAULT " + NOW + ")",
 
         "CREATE INDEX IF NOT EXISTS idx_complaints_user ON complaints(user_id)",
         "CREATE INDEX IF NOT EXISTS idx_complaints_status ON complaints(status)",
