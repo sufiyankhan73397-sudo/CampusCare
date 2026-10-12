@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.SubmitComplaintController" fitToWidth="true" styleClass="transparent-scroll">
+    <VBox styleClass="view-pane">
+        <VBox styleClass="card" spacing="10" maxWidth="820">
+            <Label text="Complaint title"/>
+            <TextField fx:id="titleField" promptText="e.g. Bus AC not working"/>
+            <HBox spacing="16">
+                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                    <Label text="Category"/>
+                    <ComboBox fx:id="categoryBox" promptText="Select category" maxWidth="Infinity"/>
+                </VBox>
+                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                    <Label text="Location"/>
+                    <ComboBox fx:id="locationBox" promptText="Select location" maxWidth="Infinity"/>
+                </VBox>
+                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                    <Label text="Priority"/>
+                    <ComboBox fx:id="priorityBox" maxWidth="Infinity"/>
+                </VBox>
+            </HBox>
+            <Label fx:id="departmentLabel" styleClass="hint-label" text="Department is assigned automatically from the category."/>
+            <Label text="Description"/>
+            <TextArea fx:id="descriptionArea" prefRowCount="6" wrapText="true" promptText="Describe the problem in detail"/>
+            <Label text="Attachment (optional)"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="Choose file..." onAction="#onChooseFile" styleClass="secondary-button"/>
+                <Label fx:id="attachmentLabel" text="No file selected"/>
+                <Button text="Remove" onAction="#onClearFile" styleClass="link-button"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Reset" onAction="#onReset" styleClass="secondary-button"/>
+                <Button text="Submit Complaint" onAction="#onSubmit" styleClass="primary-button"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</ScrollPane>

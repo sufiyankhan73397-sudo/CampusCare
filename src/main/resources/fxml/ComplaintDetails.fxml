@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.ComplaintDetailsController" styleClass="dialog-root" prefWidth="760" prefHeight="700" spacing="10">
+    <Label fx:id="titleLabel" styleClass="page-title" wrapText="true"/>
+    <HBox fx:id="badgeBox" spacing="8"/>
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="transparent-scroll">
+        <VBox spacing="12" styleClass="card">
+            <Label text="Details" styleClass="section-title"/>
+            <GridPane fx:id="infoGrid" hgap="18" vgap="6"/>
+            <Label text="Description" styleClass="section-title"/>
+            <Label fx:id="descriptionLabel" wrapText="true"/>
+            <Label text="Attachments" styleClass="section-title"/>
+            <VBox fx:id="attachmentBox" spacing="4"/>
+            <Label text="Status Timeline" styleClass="section-title"/>
+            <VBox fx:id="timelineBox" spacing="14"/>
+        </VBox>
+    </ScrollPane>
+    <HBox alignment="CENTER_RIGHT">
+        <Button text="Close" onAction="#onClose" styleClass="secondary-button"/>
+    </HBox>
+</VBox>
