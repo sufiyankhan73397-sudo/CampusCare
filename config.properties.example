@@ -1,0 +1,5 @@
+# Copy this file to "config.properties" and fill in the real values.
+# NEVER commit config.properties to GitHub.
+db.url=jdbc:postgresql://YOUR-NEON-HOST/neondb?sslmode=require&connectTimeout=20
+db.user=neondb_owner
+db.password=YOUR_PASSWORD_HERE

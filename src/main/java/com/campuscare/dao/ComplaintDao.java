@@ -94,8 +94,8 @@ public class ComplaintDao {
 
     /** Updates status + updated_at (and resolved_at when needed). */
     public void updateStatus(Connection c, int complaintId, String newStatus) throws SQLException {
-        String sql = "UPDATE complaints SET status = ?, updated_at = datetime('now','localtime'), "
-                + "resolved_at = CASE WHEN ? = 'RESOLVED' THEN datetime('now','localtime') "
+        String sql = "UPDATE complaints SET status = ?, updated_at = to_char(now() AT TIME ZONE 'Asia/Kolkata', 'YYYY-MM-DD HH24:MI:SS'), "
+                + "resolved_at = CASE WHEN ? = 'RESOLVED' THEN to_char(now() AT TIME ZONE 'Asia/Kolkata', 'YYYY-MM-DD HH24:MI:SS') "
                 + "WHEN ? = 'REOPENED' THEN NULL ELSE resolved_at END WHERE complaint_id = ?";
         try (PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, newStatus);
