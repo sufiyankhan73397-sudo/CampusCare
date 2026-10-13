@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.NotificationsController" spacing="12" styleClass="view-pane">
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Refresh" onAction="#onRefresh" styleClass="secondary-button"/>
+        <Button text="Mark all as read" onAction="#onMarkAllRead" styleClass="primary-button"/>
+    </HBox>
+    <Label text="Click an unread notification to mark it as read." styleClass="hint-label"/>
+    <ListView fx:id="listView" VBox.vgrow="ALWAYS"/>
+</VBox>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.RegisterController" styleClass="login-root">
+    <VBox styleClass="register-card" maxWidth="520" maxHeight="640" spacing="10">
+        <Label text="Create Student Account" styleClass="form-title"/>
+        <Label text="Full name"/>
+        <TextField fx:id="nameField" promptText="Your full name"/>
+        <Label text="Email"/>
+        <TextField fx:id="emailField" promptText="you@example.com"/>
+        <Label text="Phone (10 digits)"/>
+        <TextField fx:id="phoneField" promptText="9876543210"/>
+        <Label text="Password (8+ chars, upper, lower, digit)"/>
+        <PasswordField fx:id="passwordField"/>
+        <Label text="Confirm password"/>
+        <PasswordField fx:id="confirmField" onAction="#onRegister"/>
+        <Label fx:id="errorLabel" styleClass="error-label" wrapText="true"/>
+        <Button text="Register" onAction="#onRegister" styleClass="primary-button" maxWidth="Infinity"/>
+        <Button text="Back to Login" onAction="#onBack" styleClass="secondary-button" maxWidth="Infinity"/>
+    </VBox>
+</StackPane>

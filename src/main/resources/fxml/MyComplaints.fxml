@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.MyComplaintsController" spacing="12" styleClass="view-pane">
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="filter-bar">
+        <TextField fx:id="searchField" promptText="Search by id, title, location, category..." HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="statusFilter" prefWidth="140"/>
+        <ComboBox fx:id="priorityFilter" prefWidth="120"/>
+        <ComboBox fx:id="categoryFilter" prefWidth="150"/>
+    </HBox>
+    <TableView fx:id="table" VBox.vgrow="ALWAYS"/>
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Refresh" onAction="#onRefresh" styleClass="secondary-button"/>
+        <Button fx:id="detailsButton" text="View Details &amp; Timeline" onAction="#onDetails" styleClass="primary-button"/>
+        <Button fx:id="feedbackButton" text="Give Feedback" onAction="#onFeedback" styleClass="success-button"/>
+        <Button fx:id="reopenButton" text="Reopen" onAction="#onReopen" styleClass="danger-button"/>
+    </HBox>
+</VBox>

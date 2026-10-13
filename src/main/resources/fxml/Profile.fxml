@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.ProfileController" fitToWidth="true" styleClass="transparent-scroll">
+    <VBox styleClass="view-pane" spacing="16">
+        <VBox styleClass="card" spacing="8" maxWidth="620">
+            <Label text="Profile" styleClass="section-title"/>
+            <Label text="Name"/>
+            <TextField fx:id="nameField"/>
+            <Label text="Email (cannot be changed)"/>
+            <TextField fx:id="emailField" editable="false"/>
+            <Label text="Phone"/>
+            <TextField fx:id="phoneField"/>
+            <HBox spacing="20">
+                <Label text="Role:"/>
+                <Label fx:id="roleLabel" styleClass="info-key"/>
+                <Label text="Department:"/>
+                <Label fx:id="departmentLabel" styleClass="info-key"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+                <Button text="Save Profile" onAction="#onSaveProfile" styleClass="primary-button"/>
+            </HBox>
+        </VBox>
+        <VBox styleClass="card" spacing="8" maxWidth="620">
+            <Label text="Change Password" styleClass="section-title"/>
+            <Label text="Current password"/>
+            <PasswordField fx:id="oldPasswordField"/>
+            <Label text="New password"/>
+            <PasswordField fx:id="newPasswordField"/>
+            <Label text="Confirm new password"/>
+            <PasswordField fx:id="confirmPasswordField"/>
+            <HBox alignment="CENTER_RIGHT">
+                <Button text="Change Password" onAction="#onChangePassword" styleClass="primary-button"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</ScrollPane>

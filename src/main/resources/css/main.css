@@ -1,0 +1,103 @@
+/* ===== CampusCare - base theme: dark blue, white, light gray ===== */
+.root {
+    -cc-navy: #0F2A4A;
+    -cc-navy-light: #1B3F6B;
+    -cc-blue: #1E5AA8;
+    -cc-blue-hover: #174A8C;
+    -cc-bg: #F3F5F9;
+    -cc-card: #FFFFFF;
+    -cc-border: #D9DEE7;
+    -cc-text: #1F2937;
+    -cc-muted: #6B7280;
+    -cc-green: #2E8B57;
+    -cc-red: #C0392B;
+    -cc-orange: #E08A00;
+
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-text-fill: -cc-text;
+}
+
+.label { -fx-text-fill: -cc-text; }
+
+/* ----- text inputs ----- */
+.text-field, .password-field, .text-area, .combo-box-base {
+    -fx-background-color: white;
+    -fx-border-color: -cc-border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10;
+}
+.text-area { -fx-padding: 0; }
+.text-area .content { -fx-background-color: white; -fx-background-radius: 6; }
+.text-field:focused, .password-field:focused, .text-area:focused, .combo-box-base:focused {
+    -fx-border-color: -cc-blue;
+}
+.combo-box-base { -fx-padding: 2 6; }
+
+/* ----- buttons ----- */
+.button { -fx-cursor: hand; -fx-background-radius: 6; -fx-padding: 7 16; -fx-font-weight: bold; }
+.primary-button { -fx-background-color: -cc-blue; -fx-text-fill: white; }
+.primary-button:hover { -fx-background-color: -cc-blue-hover; }
+.secondary-button { -fx-background-color: white; -fx-text-fill: -cc-navy; -fx-border-color: -cc-border; -fx-border-radius: 6; }
+.secondary-button:hover { -fx-background-color: #E8EDF5; }
+.success-button { -fx-background-color: -cc-green; -fx-text-fill: white; }
+.danger-button { -fx-background-color: -cc-red; -fx-text-fill: white; }
+.link-button { -fx-background-color: transparent; -fx-text-fill: -cc-blue; }
+.button:disabled { -fx-opacity: 0.45; }
+
+/* ----- cards / layout ----- */
+.view-pane { -fx-padding: 20; }
+.card { -fx-background-color: -cc-card; -fx-background-radius: 10; -fx-padding: 16;
+        -fx-effect: dropshadow(gaussian, rgba(15,42,74,0.10), 8, 0, 0, 2); }
+.stat-card { -fx-background-color: -cc-card; -fx-background-radius: 10; -fx-padding: 16 20; -fx-spacing: 4;
+             -fx-border-color: transparent transparent transparent -cc-blue; -fx-border-width: 0 0 0 4;
+             -fx-effect: dropshadow(gaussian, rgba(15,42,74,0.10), 8, 0, 0, 2); }
+.stat-value { -fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: -cc-navy; }
+.stat-caption { -fx-text-fill: -cc-muted; }
+.chart-card { -fx-background-color: -cc-card; -fx-background-radius: 10;
+              -fx-effect: dropshadow(gaussian, rgba(15,42,74,0.10), 8, 0, 0, 2); }
+.filter-bar { -fx-background-color: -cc-card; -fx-background-radius: 10; -fx-padding: 10; }
+.dialog-root { -fx-background-color: -cc-bg; -fx-padding: 16; }
+
+.welcome { -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: -cc-navy; }
+.section-title { -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: -cc-navy; }
+.form-title { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: -cc-navy; }
+.hint-label, .muted { -fx-text-fill: -cc-muted; -fx-font-size: 12px; }
+.error-label { -fx-text-fill: -cc-red; }
+.info-key { -fx-font-weight: bold; -fx-text-fill: -cc-navy; }
+
+.transparent-scroll, .transparent-scroll > .viewport { -fx-background-color: transparent; -fx-background: transparent; }
+.scroll-pane { -fx-background-color: transparent; }
+
+/* ----- status / priority / role badges ----- */
+.badge { -fx-padding: 2 10; -fx-background-radius: 10; -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: white; }
+.badge-submitted { -fx-background-color: #6B7280; }
+.badge-assigned { -fx-background-color: #2F80ED; }
+.badge-accepted { -fx-background-color: #00A3A3; }
+.badge-in-progress { -fx-background-color: #E08A00; }
+.badge-resolved { -fx-background-color: #2E8B57; }
+.badge-closed { -fx-background-color: #34495E; }
+.badge-reopened { -fx-background-color: #C0392B; }
+.badge-normal { -fx-background-color: #6B7280; }
+.badge-medium { -fx-background-color: #2F80ED; }
+.badge-high { -fx-background-color: #E08A00; }
+.badge-critical { -fx-background-color: #C0392B; }
+.badge-student { -fx-background-color: #2F80ED; }
+.badge-staff { -fx-background-color: #00A3A3; }
+.badge-admin { -fx-background-color: #0F2A4A; }
+.badge-active { -fx-background-color: #2E8B57; }
+.badge-inactive { -fx-background-color: #C0392B; }
+
+/* ----- timeline ----- */
+.timeline-row { -fx-padding: 0 0 0 4; }
+.timeline-dot { -fx-background-color: -cc-blue; -fx-background-radius: 7; -fx-min-width: 14; -fx-min-height: 14;
+                -fx-max-width: 14; -fx-max-height: 14; -fx-translate-y: 3; }
+.timeline-status { -fx-font-weight: bold; -fx-text-fill: -cc-navy; -fx-font-size: 14px; }
+
+/* ----- notifications ----- */
+.list-view { -fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -cc-border; -fx-border-radius: 10; }
+.list-cell { -fx-padding: 10 14; -fx-background-color: white; -fx-border-color: transparent transparent #EEF1F6 transparent; }
+.list-cell:selected { -fx-background-color: #E8EDF5; }
+.notif-unread { -fx-background-color: #EAF2FF; }
+.notif-unread .label { -fx-font-weight: bold; }

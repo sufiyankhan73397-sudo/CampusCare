@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.campuscare.controller.HomeController" spacing="16" styleClass="view-pane">
+    <Label fx:id="welcomeLabel" styleClass="welcome"/>
+    <HBox spacing="16">
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <Label fx:id="totalLabel" styleClass="stat-value"/>
+            <Label text="Total Complaints" styleClass="stat-caption"/>
+        </VBox>
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <Label fx:id="pendingLabel" styleClass="stat-value"/>
+            <Label text="Pending" styleClass="stat-caption"/>
+        </VBox>
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <Label fx:id="progressLabel" styleClass="stat-value"/>
+            <Label text="In Progress" styleClass="stat-caption"/>
+        </VBox>
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <Label fx:id="doneLabel" styleClass="stat-value"/>
+            <Label text="Resolved / Closed" styleClass="stat-caption"/>
+        </VBox>
+    </HBox>
+    <Label text="Recent Complaints" styleClass="section-title"/>
+    <TableView fx:id="recentTable" VBox.vgrow="ALWAYS"/>
+</VBox>
