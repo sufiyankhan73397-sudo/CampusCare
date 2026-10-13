@@ -26,7 +26,7 @@ supported configuration method. Complaint records are stored in PostgreSQL.
 
 ## Architecture
 ```
-JavaFX / FXML  ->  Controller  ->  Service  ->  DAO  ->  JDBC  ->  SQLite
+JavaFX / FXML -> Controller -> Service -> DAO -> JDBC -> PostgreSQL
 ```
 Packages (`com.campuscare`): config, database, model, dao, service, controller, util.
 
