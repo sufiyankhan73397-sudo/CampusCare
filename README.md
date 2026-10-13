@@ -1,16 +1,16 @@
 # CampusCare - Smart Campus Issue Management and Resolution System
 
-Standalone Windows desktop app (JavaFX + SQLite). B.Tech AI&DS-C, A.Y. 2026-27, Portal ID PBL2627-AI&DS-C-021.
+Windows desktop app (JavaFX + PostgreSQL). B.Tech AI&DS-C, A.Y. 2026-27, Portal ID PBL2627-AI&DS-C-021.
 Guide: Er. Ram Babu Buri.
 
 ## Tech stack
-Java 21, JavaFX 21, Maven, SQLite (JDBC), FXML, JavaFX CSS, BCrypt, jpackage.
-
+Java 21, JavaFX 21, Maven, PostgreSQL (JDBC), FXML, JavaFX CSS, BCrypt, jpackage.
 ## Run (development)
 ```
 mvn clean javafx:run        (or double-click run.bat)
 ```
-First start auto-creates `C:\Users\<you>\CampusCare\data\campuscare.db` and `...\uploads\`.
+Database: PostgreSQL. Configure the database connection using the project's
+supported configuration method. Complaint records are stored in PostgreSQL.
 
 ## Default logins
 | Role  | Email                          | Password  |
