@@ -1,7 +1,7 @@
 # M1 - Authentication & Security
 
 **Owner:** Sufiyan Khan (Team Lead)
-**Branch:** [to be filled by owner]
+**Branch:** `develop`
 
 ## Purpose
 Lets users register, log in and manage their account, and makes sure every screen is used only by the right role (Student, Staff, Admin).
