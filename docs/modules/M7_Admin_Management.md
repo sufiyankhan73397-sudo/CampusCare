@@ -1,7 +1,7 @@
 # M7 - Admin Management
 
 **Owner:** Divyanshu Geel
-**Branch:** [to be filled by owner]
+**Branch:** `feature/admin-mgmt`
 
 ## Purpose
 Lets the administrator control users, master data and complaint assignment.

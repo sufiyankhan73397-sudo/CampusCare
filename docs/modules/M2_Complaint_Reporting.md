@@ -1,7 +1,7 @@
 # M2 - Complaint Reporting
 
 **Owner:** Sufiyan Nagori
-**Branch:** [to be filled by owner]
+**Branch:** `feature/student`
 
 ## Purpose
 Lets a student report a campus issue in one form. The complaint is stored, the right people are notified and it is assigned automatically.

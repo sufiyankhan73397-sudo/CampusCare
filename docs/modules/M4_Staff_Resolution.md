@@ -1,7 +1,7 @@
 # M4 - Staff Resolution
 
 **Owner:** Roshan Jat
-**Branch:** [to be filled by owner]
+**Branch:** `feature/staff`
 
 ## Purpose
 Gives each staff member a work list of the complaints assigned to them and lets them move a complaint to resolution.

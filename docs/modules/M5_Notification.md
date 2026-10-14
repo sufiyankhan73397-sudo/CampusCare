@@ -1,7 +1,7 @@
 # M5 - Notification
 
 **Owner:** Roshan Jat
-**Branch:** [to be filled by owner]
+**Branch:** `feature/staff`
 
 ## Purpose
 Keeps every user informed about what happens to their complaints, inside the application.

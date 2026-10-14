@@ -1,7 +1,7 @@
 # M3 - Complaint Tracking & History
 
 **Owner:** Sufiyan Nagori
-**Branch:** [to be filled by owner]
+**Branch:** `feature/student`
 
 ## Purpose
 Lets a student follow a complaint from submission to closure, see its complete history and reopen it if the problem is not fixed.

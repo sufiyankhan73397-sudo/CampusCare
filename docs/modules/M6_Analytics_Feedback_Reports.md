@@ -1,7 +1,7 @@
 # M6 - Analytics, Feedback & Reports
 
 **Owner:** Sumit Yadav
-**Branch:** [to be filled by owner]
+**Branch:** `feature/admin-dashboard`
 
 ## Purpose
 Helps the administration understand how well complaints are handled, and lets students rate the result.
