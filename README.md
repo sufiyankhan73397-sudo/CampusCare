@@ -45,3 +45,12 @@ and creates notifications.
 
 ## Git branches
 feature/student, feature/staff, feature/admin-dashboard, feature/admin-mgmt. No direct push to main.
+
+## Download and Run (Windows)
+
+1. Download **CampusCare-App.zip** from the [latest release](https://github.com/sufiyankhan73397-sudo/CampusCare/releases/latest) (you must be signed in to GitHub, the repository is private).
+2. Right-click the ZIP and choose **Extract All** (do not run it from inside the ZIP).
+3. Open the extracted folder and double-click **CampusCare.exe**.
+4. An internet connection is required because the database is on the cloud.
+5. If Windows shows "Windows protected your PC", click **More info** and then **Run anyway**.
+6. Default admin login: `admin@campuscare.com` / `Admin@123`
